@@ -23,21 +23,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Nome planeta"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/id_img_planeta"
         app:layout_constraintTop_toTopOf="@+id/id_img_planeta" />
 
     <TextView
         android:id="@+id/id_rotacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Rotacao do planeta"
+        android:layout_width="60dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="valor"
+        android:textAlignment="textEnd"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/id_img_planeta"
+        app:layout_constraintTop_toBottomOf="@+id/id_nome_planeta" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="127dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="76dp"
+        android:text="Rotação (em dias):"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/id_rotacao"
         app:layout_constraintTop_toBottomOf="@+id/id_nome_planeta" />
 
 </android.support.constraint.ConstraintLayout>

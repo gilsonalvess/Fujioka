@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testepratico.fujioka.R;
@@ -46,9 +47,13 @@ public class PlanetaAdapter extends BaseAdapter {
         // TODO adionar atributo imagem
         TextView nome = (TextView) rowView.findViewById(R.id.id_nome_planeta);
         TextView rotacao = (TextView) rowView.findViewById(R.id.id_rotacao);
+        ImageView imagem = (ImageView) rowView.findViewById(R.id.id_img_planeta);
+
+        int idImagem = activity.getResources().getIdentifier(planeta.getImagem(), "drawable", activity.getPackageName());
 
         nome.setText(planeta.getNome());
         rotacao.setText(planeta.getRotacao());
+        imagem.setImageResource(idImagem);
 
         return rowView;
     }

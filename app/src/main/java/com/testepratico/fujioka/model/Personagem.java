@@ -7,8 +7,6 @@ import java.io.Serializable;
 
 public class Personagem implements Serializable {
 
-    @SerializedName("nome")
-    @Expose
     private String _id;
 
     @SerializedName("nome")

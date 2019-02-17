@@ -1,18 +1,13 @@
 package com.testepratico.fujioka.activityController;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.testepratico.fujioka.R;
-import com.testepratico.fujioka.model.Personagem;
 import com.testepratico.fujioka.model.Planeta;
-import com.testepratico.fujioka.repository.PersonagemDAO;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PlanetasActivity extends AppCompatActivity {
 

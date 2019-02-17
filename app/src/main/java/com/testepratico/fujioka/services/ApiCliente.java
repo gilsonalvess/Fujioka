@@ -39,7 +39,7 @@ public class ApiCliente {
         return retrofit;
     }
 
-    private boolean isOnline(Context contextActivity) {
+    public static boolean isOnline(Context contextActivity) {
         ConnectivityManager cm = (ConnectivityManager) contextActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnectedOrConnecting();

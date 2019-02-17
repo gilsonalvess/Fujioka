@@ -4,7 +4,6 @@ import com.testepratico.fujioka.model.Personagem;
 import com.testepratico.fujioka.model.Planeta;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -15,6 +14,6 @@ public interface ApiInterface {
     Call<ArrayList<Planeta>> getPlanetas();
 
     @GET("/personagens")
-    Call<List<Personagem>> getPersonagens();
+    Call<ArrayList<Personagem>> getPersonagens();
 
 }

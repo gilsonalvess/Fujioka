@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testepratico.fujioka.R;
@@ -43,10 +44,19 @@ public class PersonagemAdapter extends BaseAdapter {
                 .inflate(R.layout.activity_item_personagem, parent, false);
 
         Personagem personagem = personagens.get(position);
-        // TODO adionar atributo imagem
+
         TextView nome = (TextView) rowView.findViewById(R.id.id_nome_pers);
         TextView funcao = (TextView) rowView.findViewById(R.id.id_funcao);
         TextView frota = (TextView) rowView.findViewById(R.id.id_frota);
+        ImageView foto = (ImageView) rowView.findViewById(R.id.id_img_pers);
+
+
+        if (personagem.getImagem() != null) {
+            int idImagem = activity.getResources().getIdentifier(personagem.getImagem(), "drawable", activity.getPackageName());
+            foto.setImageResource(idImagem);
+        } else {
+            foto.setImageResource(R.drawable.foto_pers_default_img);
+        }
 
         nome.setText(personagem.getNome());
         funcao.setText(personagem.getFuncao());

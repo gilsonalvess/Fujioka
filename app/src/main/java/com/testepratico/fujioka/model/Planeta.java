@@ -10,20 +10,27 @@ public class Planeta implements Serializable {
     @SerializedName("nome")
     @Expose
     private String nome;
+
     @SerializedName("massa")
     @Expose
     private String massa;
+
     @SerializedName("rotacao")
     @Expose
     private String rotacao;
 
+    @SerializedName("imagem")
+    @Expose
+    private String imagem;
+
     public Planeta() {
     }
 
-    public Planeta(String nome, String massa, String rotacao) {
+    public Planeta(String nome, String massa, String rotacao, String imagem) {
         this.nome = nome;
         this.massa = massa;
         this.rotacao = rotacao;
+        this.imagem = imagem;
     }
 
     public String getNome() {
@@ -48,5 +55,13 @@ public class Planeta implements Serializable {
 
     public void setRotacao(String rotacao) {
         this.rotacao = rotacao;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

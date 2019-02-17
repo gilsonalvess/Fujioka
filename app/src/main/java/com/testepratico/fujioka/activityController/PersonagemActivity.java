@@ -22,16 +22,16 @@ public class PersonagemActivity extends AppCompatActivity {
         carregaListaDePersonagens();
     }
 
-    protected void editarPersonagem(View view, int position, ArrayList<Personagem> listaDePersonagens){
-        Intent intent = new Intent(this, ItemPersonagemActivity.class);
-        intent.putExtra("personagem", listaDePersonagens.get(position));
-        startActivity(intent);
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
         carregaListaDePersonagens();
+    }
+
+    protected void editarPersonagem(View view, int position, ArrayList<Personagem> listaDePersonagens) {
+        Intent intent = new Intent(this, ItemPersonagemActivity.class);
+        intent.putExtra("personagem", listaDePersonagens.get(position));
+        startActivity(intent);
     }
 
     protected void carregaListaDePersonagens(){
