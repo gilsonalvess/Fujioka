@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/id_img_pers"
+        android:layout_width="99dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[8]" />
+
+    <TextView
+        android:id="@+id/id_nome_pers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Nome"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/id_img_pers"
+        app:layout_constraintTop_toTopOf="@+id/id_img_pers" />
+
+    <TextView
+        android:id="@+id/id_funcao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Funcao"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/id_img_pers"
+        app:layout_constraintTop_toBottomOf="@+id/id_nome_pers" />
+
+    <TextView
+        android:id="@+id/id_frota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Frota"
+        app:layout_constraintStart_toEndOf="@+id/id_img_pers"
+        app:layout_constraintTop_toBottomOf="@+id/id_funcao" />
+
+</android.support.constraint.ConstraintLayout>
