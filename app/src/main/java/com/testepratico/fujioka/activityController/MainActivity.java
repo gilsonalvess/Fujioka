@@ -3,19 +3,17 @@ package com.testepratico.fujioka.activityController;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.view.View;
 import android.widget.Toast;
 
 import com.testepratico.fujioka.R;
@@ -25,9 +23,7 @@ import com.testepratico.fujioka.repository.PersonagemDAO;
 import com.testepratico.fujioka.services.ApiCliente;
 import com.testepratico.fujioka.services.ApiInterface;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -62,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        validaConexao();
     }
 
     @Override
@@ -99,10 +96,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_planetas) {
-            Intent intent = new Intent(this, PersonagemActivity.class);
-            startActivity(intent);
+            carregaListaPlanetas();
         } else if (id == R.id.nav_personagens) {
-            carregaLista();
+            carregaListaPersonagens();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -115,25 +111,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
     }
 
-    protected void carregaLista() {
-
+    protected void carregaListaPlanetas() {
+        validaConexao();
         apiInterface = ApiCliente.getClient().create(ApiInterface.class);
         Call<ArrayList<Planeta>> call = apiInterface.getPlanetas();
+        loading();
         call.enqueue(new Callback<ArrayList<Planeta>>() {
             @Override
             public void onResponse(Call<ArrayList<Planeta>> call, Response<ArrayList<Planeta>> response) {
                 final Intent intent = new Intent(getBaseContext(), PlanetasActivity.class);
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     ArrayList<Planeta> planetas = response.body();
                     intent.putExtra("planetas", planetas);
                     startActivity(intent);
                 }
-                //TODO melhorar validações(Verificar se existe conexão com a internet)
-                //TODO setar as imagens nos itens da lista
-                //TODO Criar splash  para update da lista
-                //TODO Colocar "voltar" no toolbar da view das listas
                 Log.d("TAG", response.code() + "");
-                //Toast.makeText(LoginActivity.this, "Email e/ou senha inválidos. Tente novamente!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -141,5 +133,55 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 call.cancel();
             }
         });
+    }
+
+    protected void carregaListaPersonagens() {
+        validaConexao();
+        apiInterface = ApiCliente.getClient().create(ApiInterface.class);
+        Call<ArrayList<Personagem>> call = apiInterface.getPersonagens();
+        loading();
+        call.enqueue(new Callback<ArrayList<Personagem>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Personagem>> call, Response<ArrayList<Personagem>> response) {
+                final Intent intent = new Intent(getBaseContext(), PersonagemActivity.class);
+                if (response.isSuccessful()) {
+                    ArrayList<Personagem> personagens = response.body();
+                    salvarPersonagens(personagens);
+                    startActivity(intent);
+                }
+                Log.d("TAG", response.code() + "");
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Personagem>> call, Throwable t) {
+                call.cancel();
+            }
+        });
+    }
+
+    protected void salvarPersonagens(ArrayList<Personagem> personagens) {
+        PersonagemDAO personagemDAO = new PersonagemDAO(getBaseContext());
+        ArrayList<Personagem> personagensExist = personagemDAO.carregarPersonagens();
+
+        if (personagensExist.size() == 0) {
+            Toast.makeText(MainActivity.this, "Baixando lista...", Toast.LENGTH_SHORT).show();
+            for (Personagem personagem : personagens) {
+                personagemDAO.inserirPersonagem(
+                        personagem.getNome(),
+                        personagem.getImagem(),
+                        personagem.getFuncao(),
+                        personagem.getFrota()
+                );
+            }
+        }
+    }
+
+    protected void validaConexao(){
+        if(!ApiCliente.isOnline(this)){
+            Toast.makeText(this, "Você está sem conexão com internet! Não será possível baixar as listas", Toast.LENGTH_LONG).show();
+        }
+    }
+    protected void loading(){
+        Toast.makeText(MainActivity.this, "Carregando...", Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,13 +11,12 @@
         android:layout_width="339dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="228dp"
         android:layout_marginEnd="8dp"
-        android:hint="Nome"
         android:ems="10"
+        android:hint="Nome"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,11 +24,12 @@
         android:id="@+id/id_edt_funcao"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Função"
+        android:layout_marginTop="12dp"
         android:ems="10"
+        android:hint="Patente"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/id_edt_nome"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/id_edt_nome"
         app:layout_constraintTop_toBottomOf="@+id/id_edt_nome" />
 
@@ -36,11 +37,12 @@
         android:id="@+id/id_edt_frota"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Frota"
+        android:layout_marginTop="12dp"
         android:ems="10"
+        android:hint="Frota"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/id_edt_funcao"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/id_edt_funcao"
         app:layout_constraintTop_toBottomOf="@+id/id_edt_funcao" />
 
@@ -67,13 +69,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Novo Tripulante"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/id_img_cad_pers"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.17" />
+
+    <ImageView
+        android:id="@+id/id_img_cad_pers"
+        android:layout_width="154dp"
+        android:layout_height="152dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/id_edt_nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        tools:srcCompat="@tools:sample/avatars[11]" />
 </android.support.constraint.ConstraintLayout>
