@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        validaConexao();
+        isOnline();
     }
 
     @Override
@@ -112,51 +112,53 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     protected void carregaListaPlanetas() {
-        validaConexao();
-        apiInterface = ApiCliente.getClient().create(ApiInterface.class);
-        Call<ArrayList<Planeta>> call = apiInterface.getPlanetas();
-        loading();
-        call.enqueue(new Callback<ArrayList<Planeta>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Planeta>> call, Response<ArrayList<Planeta>> response) {
-                final Intent intent = new Intent(getBaseContext(), PlanetasActivity.class);
-                if (response.isSuccessful()) {
-                    ArrayList<Planeta> planetas = response.body();
-                    intent.putExtra("planetas", planetas);
-                    startActivity(intent);
+        if (isOnline()) {
+            apiInterface = ApiCliente.getClient().create(ApiInterface.class);
+            Call<ArrayList<Planeta>> call = apiInterface.getPlanetas();
+            loading();
+            call.enqueue(new Callback<ArrayList<Planeta>>() {
+                @Override
+                public void onResponse(Call<ArrayList<Planeta>> call, Response<ArrayList<Planeta>> response) {
+                    final Intent intent = new Intent(getBaseContext(), PlanetasActivity.class);
+                    if (response.isSuccessful()) {
+                        ArrayList<Planeta> planetas = response.body();
+                        intent.putExtra("planetas", planetas);
+                        startActivity(intent);
+                    }
+                    Log.d("TAG", response.code() + "");
                 }
-                Log.d("TAG", response.code() + "");
-            }
 
-            @Override
-            public void onFailure(Call<ArrayList<Planeta>> call, Throwable t) {
-                call.cancel();
-            }
-        });
+                @Override
+                public void onFailure(Call<ArrayList<Planeta>> call, Throwable t) {
+                    call.cancel();
+                }
+            });
+        }
     }
 
     protected void carregaListaPersonagens() {
-        validaConexao();
-        apiInterface = ApiCliente.getClient().create(ApiInterface.class);
-        Call<ArrayList<Personagem>> call = apiInterface.getPersonagens();
-        loading();
-        call.enqueue(new Callback<ArrayList<Personagem>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Personagem>> call, Response<ArrayList<Personagem>> response) {
-                final Intent intent = new Intent(getBaseContext(), PersonagemActivity.class);
-                if (response.isSuccessful()) {
-                    ArrayList<Personagem> personagens = response.body();
-                    salvarPersonagens(personagens);
-                    startActivity(intent);
+        if (isOnline()) {
+            apiInterface = ApiCliente.getClient().create(ApiInterface.class);
+            Call<ArrayList<Personagem>> call = apiInterface.getPersonagens();
+            loading();
+            call.enqueue(new Callback<ArrayList<Personagem>>() {
+                @Override
+                public void onResponse(Call<ArrayList<Personagem>> call, Response<ArrayList<Personagem>> response) {
+                    final Intent intent = new Intent(getBaseContext(), PersonagemActivity.class);
+                    if (response.isSuccessful()) {
+                        ArrayList<Personagem> personagens = response.body();
+                        salvarPersonagens(personagens);
+                        startActivity(intent);
+                    }
+                    Log.d("TAG", response.code() + "");
                 }
-                Log.d("TAG", response.code() + "");
-            }
 
-            @Override
-            public void onFailure(Call<ArrayList<Personagem>> call, Throwable t) {
-                call.cancel();
-            }
-        });
+                @Override
+                public void onFailure(Call<ArrayList<Personagem>> call, Throwable t) {
+                    call.cancel();
+                }
+            });
+        }
     }
 
     protected void salvarPersonagens(ArrayList<Personagem> personagens) {
@@ -176,12 +178,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    protected void validaConexao(){
-        if(!ApiCliente.isOnline(this)){
+    protected boolean isOnline() {
+        if (!ApiCliente.isOnline(this)) {
             Toast.makeText(this, "Você está sem conexão com internet! Não será possível baixar as listas", Toast.LENGTH_LONG).show();
+            return false;
         }
+        return true;
     }
-    protected void loading(){
+
+    protected void loading() {
         Toast.makeText(MainActivity.this, "Carregando...", Toast.LENGTH_SHORT).show();
     }
 }

@@ -2,6 +2,7 @@ package com.testepratico.fujioka.activityController;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +31,7 @@ public class ItemPersonagemActivity extends AppCompatActivity {
         final Personagem personagem = (Personagem) getIntent().getSerializableExtra("personagem");
         foto.setImageResource(R.drawable.foto_pers_default_img);
 
-        if(personagem != null){
+        if (personagem != null) {
             nome.setText(personagem.getNome());
             funcao.setText(personagem.getFuncao());
             frota.setText(personagem.getFrota());
@@ -46,6 +47,12 @@ public class ItemPersonagemActivity extends AppCompatActivity {
             textNovoTrip.setText("Alterar Cadastro");
         }
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setTitle("Tripulante");
+        }
+
         btnCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,19 +62,19 @@ public class ItemPersonagemActivity extends AppCompatActivity {
                 String funcaoString = funcao.getText().toString();
                 String frotaString = frota.getText().toString();
 
-                if(nomeString.equals("") || funcaoString.equals("") || frotaString.equals("")){
+                if (nomeString.equals("") || funcaoString.equals("") || frotaString.equals("")) {
                     Toast.makeText(ItemPersonagemActivity.this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 String resultado;
 
-                if(btnCadastro.getText().equals("Editar") && personagem != null){
+                if (btnCadastro.getText().equals("Editar") && personagem != null) {
                     personagem.setNome(nomeString);
                     personagem.setFuncao(funcaoString);
                     personagem.setFrota(frotaString);
                     resultado = crud.atualizaDados(personagem);
-                }else{
+                } else {
                     resultado = crud.inserirPersonagem(nomeString, null, frotaString, funcaoString);
                 }
                 Toast.makeText(ItemPersonagemActivity.this, resultado, Toast.LENGTH_SHORT).show();
@@ -75,5 +82,13 @@ public class ItemPersonagemActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
