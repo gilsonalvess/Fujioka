@@ -1,4 +1,4 @@
-package com.testepratico.fujioka;
+package com.testepratico.startrek;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.testepratico.fujioka", appContext.getPackageName());
+        assertEquals("com.testepratico.startrek", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.testepratico.fujioka.activityController;
+package com.testepratico.startrek.activityController;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,12 +16,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.testepratico.fujioka.R;
-import com.testepratico.fujioka.model.Personagem;
-import com.testepratico.fujioka.model.Planeta;
-import com.testepratico.fujioka.repository.PersonagemDAO;
-import com.testepratico.fujioka.services.ApiCliente;
-import com.testepratico.fujioka.services.ApiInterface;
+import com.testepratico.startrek.R;
+import com.testepratico.startrek.model.Personagem;
+import com.testepratico.startrek.model.Planeta;
+import com.testepratico.startrek.repository.PersonagemDAO;
+import com.testepratico.startrek.services.ApiCliente;
+import com.testepratico.startrek.services.ApiInterface;
 
 import java.util.ArrayList;
 
@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.

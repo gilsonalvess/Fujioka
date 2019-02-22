@@ -1,7 +1,7 @@
-package com.testepratico.fujioka.services;
+package com.testepratico.startrek.services;
 
-import com.testepratico.fujioka.model.Personagem;
-import com.testepratico.fujioka.model.Planeta;
+import com.testepratico.startrek.model.Personagem;
+import com.testepratico.startrek.model.Planeta;
 
 import java.util.ArrayList;
 

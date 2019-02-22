@@ -1,4 +1,4 @@
-package com.testepratico.fujioka.activityController;
+package com.testepratico.startrek.activityController;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.testepratico.fujioka.R;
-import com.testepratico.fujioka.model.Personagem;
-import com.testepratico.fujioka.repository.PersonagemDAO;
+import com.testepratico.startrek.R;
+import com.testepratico.startrek.model.Personagem;
+import com.testepratico.startrek.repository.PersonagemDAO;
 
 public class ItemPersonagemActivity extends AppCompatActivity {
 

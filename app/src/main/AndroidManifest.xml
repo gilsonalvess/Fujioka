@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.testepratico.fujioka">
+    package="com.testepratico.startrek">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activityController.PersonagemActivity"></activity>
-        <activity android:name=".activityController.ItemPersonagemActivity" />
-        <activity android:name=".activityController.PlanetasActivity" />
+        <activity android:name="com.testepratico.startrek.activityController.PersonagemActivity"></activity>
+        <activity android:name="com.testepratico.startrek.activityController.ItemPersonagemActivity" />
+        <activity android:name="com.testepratico.startrek.activityController.PlanetasActivity" />
         <activity
-            android:name=".activityController.MainActivity"
+            android:name="com.testepratico.startrek.activityController.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

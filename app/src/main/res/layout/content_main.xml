@@ -12,7 +12,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Star Trek Fujioka"
+        android:text="App Star Trek"
         android:textColor="@android:color/darker_gray"
         android:textSize="24sp"
         android:textStyle="bold"

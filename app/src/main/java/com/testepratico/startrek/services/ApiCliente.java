@@ -1,4 +1,4 @@
-package com.testepratico.fujioka.services;
+package com.testepratico.startrek.services;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

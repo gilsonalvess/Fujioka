@@ -1,4 +1,4 @@
-package com.testepratico.fujioka;
+package com.testepratico.startrek;
 
 import org.junit.Test;
 

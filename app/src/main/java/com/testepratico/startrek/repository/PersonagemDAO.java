@@ -1,11 +1,11 @@
-package com.testepratico.fujioka.repository;
+package com.testepratico.startrek.repository;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.testepratico.fujioka.model.Personagem;
+import com.testepratico.startrek.model.Personagem;
 
 import java.util.ArrayList;
 

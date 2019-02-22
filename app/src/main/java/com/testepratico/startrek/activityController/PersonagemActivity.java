@@ -1,4 +1,4 @@
-package com.testepratico.fujioka.activityController;
+package com.testepratico.startrek.activityController;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.testepratico.fujioka.R;
-import com.testepratico.fujioka.model.Personagem;
-import com.testepratico.fujioka.repository.PersonagemDAO;
+import com.testepratico.startrek.R;
+import com.testepratico.startrek.model.Personagem;
+import com.testepratico.startrek.repository.PersonagemDAO;
 
 import java.util.ArrayList;
 

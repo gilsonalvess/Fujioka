@@ -1,4 +1,4 @@
-package com.testepratico.fujioka.model;
+package com.testepratico.startrek.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

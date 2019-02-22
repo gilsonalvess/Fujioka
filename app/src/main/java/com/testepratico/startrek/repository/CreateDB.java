@@ -1,4 +1,4 @@
-package com.testepratico.fujioka.repository;
+package com.testepratico.startrek.repository;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

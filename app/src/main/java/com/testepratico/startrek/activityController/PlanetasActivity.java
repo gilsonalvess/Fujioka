@@ -1,12 +1,12 @@
-package com.testepratico.fujioka.activityController;
+package com.testepratico.startrek.activityController;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.testepratico.fujioka.R;
-import com.testepratico.fujioka.model.Planeta;
+import com.testepratico.startrek.R;
+import com.testepratico.startrek.model.Planeta;
 
 import java.util.ArrayList;
 
